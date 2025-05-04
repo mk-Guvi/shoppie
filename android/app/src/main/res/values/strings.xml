@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">shoppie</string>
+    <string name="title_activity_main">shoppie</string>
+    <string name="package_name">com.shoppie.app</string>
+    <string name="custom_url_scheme">com.shoppie.app</string>
+</resources>
