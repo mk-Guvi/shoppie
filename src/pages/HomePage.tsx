@@ -7,7 +7,7 @@ function HomePage() {
     <div className="container flex gap-2 flex-col items-center justify-center overflow-auto h-full">
       <h1>HomePage</h1>
       <Button onClick={()=>{
-        toast("Hello World Deployed")
+        toast("Hello World")
       }}>Click</Button>
     </div>
   );
