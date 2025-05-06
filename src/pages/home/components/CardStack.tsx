@@ -14,7 +14,7 @@ interface CardStackProps {
 }
 
 const pageSize = 3;
-const cardStacks=[0, 1, 2]
+const cardStacks = [0, 1, 2];
 type CartPageState = {
   isLoadingMore: boolean;
   currentPage: number;
@@ -39,7 +39,6 @@ const CardStack: React.FC<CardStackProps> = ({ className }) => {
   };
   // Simulate an API call to fetch more products
   const loadProducts = async (cartPageState: CartPageState) => {
-    
     if (cartPageState?.totalPages >= cartPageState?.currentPage) {
       handlePageState({ isLoadingMore: true });
       await suspenseApi(2000);
@@ -92,21 +91,28 @@ const CardStack: React.FC<CardStackProps> = ({ className }) => {
     });
   };
 
-  const onRefresh=useCallback(() => {
+  const onRefresh = useCallback(() => {
     handlePageState({
       currentPage: 1,
       totalPages: products.length,
     });
-  },[])
+  }, []);
 
   return (
     <div
       className={cn(
-        "flex flex-col justify-center h-full overflow-hidden items-center w-full ",
+        " h-full overflow-hidden flex flex-col justify-center  p-2 items-center w-full ",
         className
       )}
     >
-      <div className="relative w-full aspect-[3/4] max-w-[250px] mb-6">
+      <div className="text-center mb-6">
+        <h2 className="text-2xl font-semibold">Discover Products</h2>
+        <p className="text-muted-foreground">
+          Swipe right to like, left to pass, up to add to cart
+        </p>
+      </div>
+
+      <div className="relative mx-auto w-full  aspect-square max-w-sm">
         {/* Show empty state when appropriate */}
         {cartPageState.isLoadingMore ? (
           <ProductSkeleton />
@@ -127,7 +133,7 @@ const CardStack: React.FC<CardStackProps> = ({ className }) => {
                 <div
                   key={`${product?.id}-${offset}`}
                   className={cn(
-                    "absolute inset-0",
+                    "absolute inset-0 ",
                     offset === 0 ? "z-30" : offset === 1 ? "z-20 " : "z-10 "
                   )}
                 >
@@ -142,12 +148,6 @@ const CardStack: React.FC<CardStackProps> = ({ className }) => {
           </>
         )}
       </div>
-      {cartPageState.totalPages &&
-      cartPageState.currentPage <= cartPageState.totalPages ? (
-        <div className="text-sm text-gray-500 mt-2">
-          {cartPageState.currentPage} of {cartPageState.totalPages}
-        </div>
-      ) : null}
     </div>
   );
 };

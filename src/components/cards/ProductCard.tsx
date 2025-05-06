@@ -2,13 +2,15 @@ import React from "react";
 import { Product } from "../../types/products";
 import { cn } from "../../lib/utils";
 
-
 interface ProductCardProps {
   product: Product;
   className?: string;
 }
 
-const ProductCard: React.FC<ProductCardProps> = ({ product, className='' }) => {
+const ProductCard: React.FC<ProductCardProps> = ({
+  product,
+  className = "",
+}) => {
   // Calculate discount percentage if there's an original price
   const discountPercentage = product?.originalPrice
     ? Math.round(
@@ -19,7 +21,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, className='' }) => {
   return (
     <div
       className={cn(
-        "w-full h-full bg-white rounded-xl overflow-hidden flex flex-col card-shadow",
+        "w-full h-full bg-white rounded-xl overflow-hidden flex flex-col drop-shadow-sm",
         className
       )}
     >
