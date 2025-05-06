@@ -1,7 +1,7 @@
 import Navbar from "./components/bars/Navbar";
 import { Toaster } from "./components/ui/sonner";
 import { CartProvider } from "./contexts/CartContext";
-import HomePage from "./pages/HomePage";
+import HomePage from "./pages/home/HomePage";
 
 function App() {
   return (

@@ -86,3 +86,16 @@
     overflow-x: hidden;
   }
 }
+
+/* Specific styles for our swipe-shop app */
+@layer components {
+  .swipeable-card {
+    @apply touch-none select-none;
+    will-change: transform;
+  }
+  
+  .card-shadow {
+    @apply shadow-lg;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  }
+}
